@@ -1,6 +1,5 @@
 from datetime import date
 import mysql.connector
-from tabulate import tabulate
 import random
 
 mydb = mysql.connector.connect(
@@ -8,7 +7,6 @@ mydb = mysql.connector.connect(
     user="sql6683942",
     password="q5teqr1i3m",
     database="sql6683942")
-
 
 mycursor = mydb.cursor()
 mycursor2= mydb.cursor(buffered=True)
@@ -169,28 +167,6 @@ class expense:
 
 
 
-def add_item():
-    tempo_list = []
-    for i in item_list:
-        x = input("enter the " + i + " :- ")
-        tempo_list.append(x)
-    sql = "INSERT INTO item (name,price,stock) VALUES (%s, %s, %s)"
-    mycursor.execute(sql, tuple(tempo_list))
-    mydb.commit()
-
-
-def add_sale():
-    tempo_list = [str(d1)]
-    for i in sale_list:
-        x = input("enter the " + i + " :- ")
-        tempo_list.append(x)
-    sql = "INSERT INTO sale (sale_date,cust_id,mop) VALUES (%s, %s, %s)"
-    mycursor2.execute(sql, tuple(tempo_list))
-    mydb.commit()
-    sql1 = "SELECT * FROM sale ORDER BY sale_id DESC"
-    mycursor2.execute(sql1)
-    myresult = mycursor2.fetchone()
-    add_order_details(myresult[0])
 
 
 
