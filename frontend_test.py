@@ -3,7 +3,7 @@ from flask import Flask, render_template, request, redirect, url_for, session
 
 app = Flask(__name__)
 
-@app.route('/login', methods =['GET', 'POST'])
+@app.route('/', methods =['GET', 'POST'])
 def login():
 	msg = ''
 	if request.method == 'POST' and 'username' in request.form and 'password' in request.form:
